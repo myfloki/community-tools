@@ -112,7 +112,7 @@ download_and_install() {
     rm -f "$file_path"
 
     echo -e "${YELLOW}⚙️  Installing to $BIN_DIR...${RESET}"
-    find "$TMP_DIR" -type f -perm +111 | while read -r bin; do
+    find "$TMP_DIR" -type f | while read -r bin; do
         bin_name=$(basename "$bin")
         $USE_SUDO cp "$bin" "$BIN_DIR/$bin_name"
         $USE_SUDO chmod +x "$BIN_DIR/$bin_name"
