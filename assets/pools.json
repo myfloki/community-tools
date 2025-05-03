@@ -8,5 +8,15 @@
       "/Fpool Solo/"
     ],
     "link": "https://www.fpool.net"
+  },
+  {
+    "id": 2,
+    "name": "Gminer",
+    "addresses": [
+    ],
+    "tags": [
+      "/gminer/"
+    ],
+    "link": "https://www.myfloki.com"
   }
 ]
