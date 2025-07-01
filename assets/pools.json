@@ -18,5 +18,15 @@
       "/gminer/"
     ],
     "link": "https://www.myfloki.com"
+  },
+  {
+     "id": 3,
+    "name": "Fpool Fishing",
+    "addresses": [
+    ],
+    "tags": [
+      "/Fpool Fishing/"
+    ],
+    "link": "https://www.fpool.net"
   }
 ]
