@@ -38,23 +38,43 @@ case "$ARCH" in
 esac
 
 # Set install path
+USE_SUDO=""
 case "$OS" in
   linux|darwin)
     BIN_DIR="/usr/local/bin"
-    USE_SUDO="sudo"
     ;;
   msys*|mingw*|cygwin)
     BIN_DIR="$HOME/.local/bin"
-    USE_SUDO=""
     ;;
   *)
     BIN_DIR="$HOME/.local/bin"
-    USE_SUDO=""
     ;;
 esac
 
+if [ "$BIN_DIR" = "/usr/local/bin" ]; then
+  if [ "$(id -u)" -eq 0 ]; then
+    USE_SUDO=""
+  elif command -v sudo >/dev/null 2>&1; then
+    if sudo -n true >/dev/null 2>&1; then
+      USE_SUDO="sudo"
+    else
+      printf '%b\n' "${RED}❌ Elevated permissions required to install into ${BIN_DIR}.${RESET}"
+      printf '%b\n' "${YELLOW}Re-run this script with sudo or as the root user.${RESET}"
+      exit 1
+    fi
+  else
+    printf '%b\n' "${RED}❌ sudo is not available, and elevated permissions are required for ${BIN_DIR}.${RESET}"
+    printf '%b\n' "${YELLOW}Install sudo or rerun the script as the root user.${RESET}"
+    exit 1
+  fi
+fi
+
 TMP_DIR="/tmp/community_tools"
-mkdir -p "$BIN_DIR"
+if [ -n "$USE_SUDO" ]; then
+  $USE_SUDO mkdir -p "$BIN_DIR"
+else
+  mkdir -p "$BIN_DIR"
+fi
 
 # 🔍 Check requirements
 check_requirements() {
