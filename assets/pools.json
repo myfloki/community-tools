@@ -7,7 +7,7 @@
     "tags": [
       "/Fpool Solo/"
     ],
-    "link": "https://www.fpool.net"
+    "link": "https://fpool.net"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "tags": [
       "/gminer/"
     ],
-    "link": "https://www.myfloki.com"
+    "link": "https://myfloki.com"
   },
   {
      "id": 3,
@@ -27,6 +27,26 @@
     "tags": [
       "/Fpool Fishing/"
     ],
-    "link": "https://www.fpool.net"
+    "link": "https://fpool.net"
+  },
+  {
+     "id": 4,
+    "name": "ViaFLC",
+    "addresses": [
+    ],
+    "tags": [
+      "/viaflc.com/"
+    ],
+    "link": "https://viaflc.com"
+  },
+  {
+     "id": 5,
+    "name": "ViaFLC Solo",
+    "addresses": [
+    ],
+    "tags": [
+      "/viaflc.com/solo/"
+    ],
+    "link": "https://fpool.net"
   }
 ]
