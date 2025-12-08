@@ -48,5 +48,15 @@
       "/viaflc.com/solo/"
     ],
     "link": "https://viaflc.com"
+  },
+  {
+     "id": 5,
+    "name": "Hash2cash",
+    "addresses": [
+    ],
+    "tags": [
+      "/hash2cash/"
+    ],
+    "link": "https://hash2.cash"
   }
 ]
