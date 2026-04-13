@@ -22,8 +22,7 @@ trap 'on_exit' EXIT
 # GitHub repositories (owner/repo), space-separated
 REPOS="
 flokiorg/tWallet
-flokiorg/grpc-miner
-flokiorg/fcli
+flokiorg/flnd
 flokiorg/go-flokicoin
 "
 
