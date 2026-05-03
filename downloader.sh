@@ -110,9 +110,17 @@ download_and_install() {
   printf '%b %s\n' "${CYAN}🔗 Processing:${RESET}" "$repo"
 
   release_json=$(get_latest_json "$repo")
+
+  # Check for GitHub API error message (e.g., rate limit or not found)
+  error_msg=$(printf '%s\n' "$release_json" | jq -r '.message // empty' 2>/dev/null)
+  if [ -n "$error_msg" ]; then
+    printf '%b %s: %b%s%b\n\n' "${RED}🚫 GitHub API Error for${RESET}" "$repo" "${YELLOW}" "$error_msg" "${RESET}"
+    return
+  fi
+
   download_url=$(printf '%s\n' "$release_json" |
     jq -r --arg os "$OS" --arg arch "$ARCH" \
-      '.assets[] | select(.name|test($os) and test($arch)) | .browser_download_url' |
+      '.assets?[]? | select(.name|test($os) and test($arch)) | .browser_download_url' |
     head -n 1)
 
   if [ -z "$download_url" ] || [ "$download_url" = "null" ]; then
